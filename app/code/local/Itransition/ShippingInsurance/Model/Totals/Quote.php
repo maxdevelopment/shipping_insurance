@@ -8,7 +8,7 @@ class Itransition_ShippingInsurance_Model_Totals_Quote extends Mage_Sales_Model_
     {
         parent::collect($address);
         $enabled = Mage::getStoreConfig(
-            'customconfig_options/section_one/module_enabled'
+            'shipping_insurance/settings/module_enabled'
         );
 
         if ($enabled) {
@@ -25,7 +25,7 @@ class Itransition_ShippingInsurance_Model_Totals_Quote extends Mage_Sales_Model_
     public function fetch(Mage_Sales_Model_Quote_Address $address)
     {
         $label = Mage::getStoreConfig(
-            'customconfig_options/section_one/shipping_insurance_label'
+            'shipping_insurance/settings/shipping_insurance_label'
         );
 
         if ($address->getInsuranceShippingMethod()) {
@@ -47,10 +47,10 @@ class Itransition_ShippingInsurance_Model_Totals_Quote extends Mage_Sales_Model_
     protected function countInsuranceValue(Mage_Sales_Model_Quote_Address $address)
     {
         $type = Mage::getStoreConfig(
-            'customconfig_options/section_one/shipping_insurance_type'
+            'shipping_insurance/settings/shipping_insurance_type'
         );
         $value = Mage::getStoreConfig(
-            'customconfig_options/section_one/shipping_insurance_value'
+            'shipping_insurance/settings/shipping_insurance_value'
         );
         $subTotal = floatval($address->getSubtotal());
         $countedValue = 0;

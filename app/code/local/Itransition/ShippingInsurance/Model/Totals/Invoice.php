@@ -7,7 +7,7 @@ class Itransition_ShippingInsurance_Model_Totals_Invoice extends Mage_Sales_Mode
         $order = $invoice->getOrder();
         $amount = $order->getShippingInsurance();
         $enabled = Mage::getStoreConfig(
-            'customconfig_options/section_one/module_enabled'
+            'shipping_insurance/settings/module_enabled'
         );
 
         if ($enabled && $order->getInsuranceShippingMethod()) {

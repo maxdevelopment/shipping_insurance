@@ -10,7 +10,7 @@ class Itransition_ShippingInsurance_Helper_Data extends Mage_Core_Helper_Abstrac
     public function setOrderAdditionalTotal(Mage_Sales_Model_Order $order, $instance)
     {
         $label = Mage::getStoreConfig(
-            'customconfig_options/section_one/shipping_insurance_label'
+            'shipping_insurance/settings/shipping_insurance_label'
         );
 
         if ($order->getInsuranceShippingMethod()) {

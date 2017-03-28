@@ -11,7 +11,7 @@ class Itransition_ShippingInsurance_Block_Checkout_Onepage_Insurance extends Mag
 
     public function isEnabled() {
         return Mage::getStoreConfig(
-            'customconfig_options/section_one/module_enabled'
+            'shipping_insurance/settings/module_enabled'
         );
     }
 }

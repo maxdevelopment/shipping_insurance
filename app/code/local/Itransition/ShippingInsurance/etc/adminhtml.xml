@@ -8,9 +8,9 @@
                         <children>
                             <config>
                                 <children>
-                                    <customconfig_options>
-                                        <title>Custom Configuration Section</title>
-                                    </customconfig_options>
+                                    <shipping_insurance>
+                                        <title>Shipping insurance module</title>
+                                    </shipping_insurance>
                                 </children>
                             </config>
                         </children>
