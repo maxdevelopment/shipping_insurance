@@ -17,7 +17,7 @@ class Itransition_ShippingInsurance_Model_Totals_Quote extends Mage_Sales_Model_
                 return $this;
             }
 
-            $insuranceValue = $this->countInsuranceValue($address);
+            $insuranceValue = $this->calculateInsuranceValue($address);
             $this->setInsuranceValue($address, $insuranceValue);
         }
     }
@@ -44,7 +44,7 @@ class Itransition_ShippingInsurance_Model_Totals_Quote extends Mage_Sales_Model_
      * @param \Mage_Sales_Model_Quote_Address $address
      * @return float|int
      */
-    protected function countInsuranceValue(Mage_Sales_Model_Quote_Address $address)
+    protected function calculateInsuranceValue(Mage_Sales_Model_Quote_Address $address)
     {
         $type = Mage::getStoreConfig(
             'shipping_insurance/settings/shipping_insurance_type'
