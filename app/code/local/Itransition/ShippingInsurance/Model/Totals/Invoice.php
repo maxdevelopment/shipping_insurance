@@ -4,19 +4,6 @@ class Itransition_ShippingInsurance_Model_Totals_Invoice extends Mage_Sales_Mode
 {
     public function collect(Mage_Sales_Model_Order_Invoice $invoice)
     {
-        $order = $invoice->getOrder();
-        $amount = $order->getShippingInsurance();
-        $enabled = Mage::getStoreConfig(
-            'shipping_insurance/settings/module_enabled'
-        );
-
-        if ($enabled && $order->getInsuranceShippingMethod()) {
-            $invoice->setGrandTotal($invoice->getGrandTotal() + $amount);
-            $invoice->setBaseGrandTotal(
-                $invoice->getBaseGrandTotal() + $amount
-            );
-        }
-
-        return $this;
+        return Mage::helper('shipping_insurance/totals')->collect($invoice);
     }
 }
