@@ -52,12 +52,17 @@ class Itransition_ShippingInsurance_Model_Totals_Quote extends Mage_Sales_Model_
         $value = Mage::getStoreConfig(
             'shipping_insurance/settings/shipping_insurance_value'
         );
-        $subTotal = floatval($address->getSubtotal());
+
+        $subTotal = 0;
         $countedValue = 0;
 
-        if ($type == 1) {
+        array_map(function ($item) use (&$subTotal) {
+            $subTotal += $item->getQty() * $item->getPrice();
+        }, $this->_getAddressItems($address));
+
+        if ($type == Itransition_ShippingInsurance_Model_Adminhtml_Type::ABSOLUTE_VALUE) {
             $countedValue = round($value, 4, PHP_ROUND_HALF_UP);
-        } elseif ($type == 0) {
+        } elseif ($type == Itransition_ShippingInsurance_Model_Adminhtml_Type::PERCENT_FROM_ORDER) {
             $countedValue = round($subTotal * ($value / 100), 4, PHP_ROUND_HALF_UP);
         }
 
