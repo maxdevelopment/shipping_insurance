@@ -11,11 +11,8 @@ class Itransition_ShippingInsurance_Helper_Totals extends Mage_Core_Helper_Abstr
 
             $order = $instance->getOrder();
             $amount = $order->getShippingInsurance();
-            $enabled = Mage::getStoreConfig(
-                'shipping_insurance/settings/module_enabled'
-            );
 
-            if ($enabled && $order->getInsuranceShippingMethod()) {
+            if (!is_null($amount)) {
                 $instance->setGrandTotal($instance->getGrandTotal() + $amount);
                 $instance->setBaseGrandTotal($instance->getBaseGrandTotal() + $amount
                 );

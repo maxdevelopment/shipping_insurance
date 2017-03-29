@@ -12,9 +12,9 @@ class Itransition_ShippingInsurance_Helper_Data extends Mage_Core_Helper_Abstrac
         $label = Mage::getStoreConfig(
             'shipping_insurance/settings/shipping_insurance_label'
         );
-
-        if ($order->getInsuranceShippingMethod()) {
-            $amount = $order->getShippingInsurance();
+        $amount = $order->getShippingInsurance();
+        
+        if (!is_null($amount)) {
             $instance->addTotalBefore(
                 new Varien_Object(
                     [
@@ -27,7 +27,6 @@ class Itransition_ShippingInsurance_Helper_Data extends Mage_Core_Helper_Abstrac
                 )
             );
         }
-
         return $instance;
     }
 }

@@ -142,6 +142,15 @@
                     </shippinginsurancecalc_observer>
                 </observers>
             </checkout_controller_onepage_save_shipping_method>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <shippinginsurancecalc_observer>
+                        <type>singleton</type>
+                        <class>shipping_insurance/observer</class>
+                        <method>flushInsurance</method>
+                    </shippinginsurancecalc_observer>
+                </observers>
+            </checkout_cart_product_add_after>
         </events>
     </frontend>
 </config>

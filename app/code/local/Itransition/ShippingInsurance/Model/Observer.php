@@ -8,18 +8,18 @@ class Itransition_ShippingInsurance_Model_Observer
         );
 
         if ($enabled) {
-            $quote = $observer->getQuote();
-            $address = $quote->getShippingAddress();
             $accepted = Mage::app()->getRequest()->getParam('insurance_enabled', false);
-
+    
             if ($accepted) {
-                $shippingMethod = $address->getShippingMethod();
-                $address->setInsuranceShippingMethod($shippingMethod);
-                $quote->setInsuranceShippingMethod($shippingMethod);
+                Mage::getSingleton('customer/session')->addData(['insurance' => true]);
             } else {
-                $address->setInsuranceShippingMethod(null);
-                $quote->setInsuranceShippingMethod(null);
+                Mage::getSingleton('customer/session')->addData(['insurance' => false]);
             }
         }
+    }
+    
+    public function flushInsurance(Varien_Event_Observer $observer)
+    {
+        Mage::getSingleton('customer/session')->addData(['insurance' => false]);
     }
 }

@@ -3,10 +3,8 @@ class Itransition_ShippingInsurance_Block_Checkout_Onepage_Insurance extends Mag
 {
     public function getInsuranceValue()
     {
-        $quote = $this->getQuote();
-        $value = Mage::helper('core')->currency($quote->getShippingInsurance(), true, false);
-
-        return $value;
+        return Mage::helper('core')
+            ->currency(Mage::getSingleton('customer/session')->getData('insurance_value'), true, false);
     }
 
     public function isEnabled() {
